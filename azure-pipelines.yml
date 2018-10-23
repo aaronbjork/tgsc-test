@@ -12,3 +12,12 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- script: dotnet publish --output $(Build.ArtifactStagingDirectory)
+  displayName: 'dotnet publish --output $(Build.ArtifactStagingDirectory)'
+
+- task: AzureRmWebAppDeployment@3
+  inputs:
+    azureSubscription: 'dev-resources-connect'
+    WebAppName: 'tgsc-test'
+    Package: '$(Build.ArtifactStagingDirectory)'
