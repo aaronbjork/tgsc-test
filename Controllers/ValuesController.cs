@@ -14,7 +14,7 @@ namespace tgsc_test.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "Aaron", "Bjork" };
+            return new string[] { "Aaron 1", "Bjork 1" };
         }
 
         // GET api/values/5
